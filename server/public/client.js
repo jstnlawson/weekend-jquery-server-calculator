@@ -19,6 +19,7 @@ function getString() {
       method: 'GET',
       url: '/calculator'
     }).then(function (response) {
+        render()
       console.log('getString function!', response)
       //render(response);
     }).catch(function (error) {
@@ -27,38 +28,19 @@ function getString() {
     })
   }
 
-  function mathButton() {
+function mathButton() {
     thisVal = $(this).val()
     console.log('Selected button is:', thisVal)
   }
   
-  
-
-
 //add strings from the inputs and buttons to an array
-
-// function getMathBtnText() {
-//     let buttonText = $(this).text()
-//     console.log(buttonText)
-// }
-// const addBtn = $('#add-btn').on('click', getMathBtnText)
-// console.log("addBtn is:", addBtn)
 
 function stringToAdd(event) {
     console.log('string to add function')
     event.preventDefault()
     
-
     const digitOne = $('#digit-one').val()
     const digitTwo = $('#digit-two').val()
-    //buttons
-    
-    // const addBtn = $('#add-btn').val()
-    // const minusBtn = $('#minus-btn').val()
-    // const multiplyBtn = $('#multiply-btn').val()
-    // const divideBtn = $('#divide-btn').val()
-    // const equalsBtn = $('#equals-btn').text()
-    // const clearBtn = $('#clear-btn').text()
    
         $.ajax({
         method: 'POST',
@@ -67,10 +49,7 @@ function stringToAdd(event) {
           stringToAdd: {
             num1: digitOne,
             num2: digitTwo,
-            btn: thisVal//,
-            //minus: minusBtn//,
-            // multiply: multiplyBtn,
-            // divide: divideBtn
+            btn: thisVal
             }
         }
       }).then(function (response) {
@@ -83,9 +62,14 @@ function stringToAdd(event) {
       })
     }
 
+function render(value) {
+    console.log('render is running')
+    $('#solution').empty()
     
-    
-    //MATH BUTTON FUNCTIONS
+        $('#solution').append(`
+        <h2>${value.outcome}</h2>`)
+}
+
 
    
 
