@@ -1,6 +1,8 @@
 $(document).ready(onReady)
 
+//const addBtn = $('#add-btn').on('click', getMathBtnText)
 
+let thisVal = 0
 
 function onReady() {
     console.log('jquery loaded!')
@@ -8,6 +10,7 @@ function onReady() {
 
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
+    $('.math-btn').on('click', mathButton)
 }
 
 
@@ -24,48 +27,50 @@ function getString() {
     })
   }
 
-// //inputs
-// const digitOne = $('#digit-one').val()
-// const digitTwo = $('#digit-two').val()
+  function mathButton() {
+    thisVal = $(this).val()
+    console.log('Selected button is:', thisVal)
+  }
+  
+  
 
-// //buttons
-// const addBtn = $('#add-btn').val()
-// const minusBtn = $('#minus-btn').val()
-// const multiplyBtn = $('#multiply-btn').val()
-// const divideBtn = $('$#divide-btn').val()
-// const equalsBtn = $('#equals-btn')
-// const clearBtn = $('#clear-btn')
 
 //add strings from the inputs and buttons to an array
+
+// function getMathBtnText() {
+//     let buttonText = $(this).text()
+//     console.log(buttonText)
+// }
+// const addBtn = $('#add-btn').on('click', getMathBtnText)
+// console.log("addBtn is:", addBtn)
 
 function stringToAdd(event) {
     console.log('string to add function')
     event.preventDefault()
+    
 
-    //inputs 
     const digitOne = $('#digit-one').val()
     const digitTwo = $('#digit-two').val()
-
     //buttons
-    const addBtn = $('#add-btn').text()
-    // const minusBtn = $('#minus-btn').val('')
-    // const multiplyBtn = $('#multiply-btn').val('')
-    // const divideBtn = $('#divide-btn').val('')
-    // const equalsBtn = $('#equals-btn').val('')
-    //const clearBtn = $('#clear-btn')
-
-    $.ajax({
+    
+    // const addBtn = $('#add-btn').val()
+    // const minusBtn = $('#minus-btn').val()
+    // const multiplyBtn = $('#multiply-btn').val()
+    // const divideBtn = $('#divide-btn').val()
+    // const equalsBtn = $('#equals-btn').text()
+    // const clearBtn = $('#clear-btn').text()
+   
+        $.ajax({
         method: 'POST',
         url: '/calculator',
         data: {
           stringToAdd: {
             num1: digitOne,
             num2: digitTwo,
-            add: addBtn //add comma!
-            // minus: minusBtn,
+            btn: thisVal//,
+            //minus: minusBtn//,
             // multiply: multiplyBtn,
-            // divide: divideBtn,
-            // equals: equalsBtn
+            // divide: divideBtn
             }
         }
       }).then(function (response) {
@@ -77,5 +82,12 @@ function stringToAdd(event) {
         console.log('error with post', error)
       })
     }
+
+    
+    
+    //MATH BUTTON FUNCTIONS
+
+   
+
     
 
