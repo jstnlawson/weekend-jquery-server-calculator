@@ -15,11 +15,15 @@ let calculatorArray = require('./modules/calculatorArray')
 
 
 
-
+app.get('/calculator', function (req, res) {
+    //console.log('Inside of get for prior saved guesses')
+    res.send(calculatorArray)
+    console.log('data from app.get is:', calculatorArray)
+  })
 
 app.post('/calculator', function (req, res) {
-    console.log('in POST request! Here is the data: ', req.body);
-    calculatorArray.push(req.body.getString);
+    console.log('in app.post, Here is the data: ', req.body);
+    calculatorArray.push(req.body.stringToAdd);
     res.sendStatus(201);
   })
 
