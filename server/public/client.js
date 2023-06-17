@@ -19,7 +19,7 @@ function getString() {
       method: 'GET',
       url: '/calculator'
     }).then(function (response) {
-        render()
+        render(response)
       console.log('getString function!', response)
       //render(response);
     }).catch(function (error) {
@@ -62,12 +62,17 @@ function stringToAdd(event) {
       })
     }
 
-function render(value) {
+function render(response) {
     console.log('render is running')
     $('#solution').empty()
-    
-        $('#solution').append(`
-        <h2>${value.outcome}</h2>`)
+    if (response.length > 0) {
+        const latestResult = response[response.length - 1]
+        $('#solution').append(`<h2>${latestResult.result}</h2>`)
+      }
+    // for (let value of response) {
+    //     $('#solution').append(`
+    //     <h2>${value.result}</h2>`)
+    //     }
 }
 
 
