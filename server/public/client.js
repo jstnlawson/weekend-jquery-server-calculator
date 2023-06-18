@@ -10,57 +10,59 @@ function onReady() {
 
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
-    $('.math-btn').on('click', mathButton)
+    //$('.math-btn').on('click', mathButton)
+    $('.clear').on('click', '#clear-btn', clearInputs)
+
 }
 
 
 function getString() {
     $.ajax({
-      method: 'GET',
-      url: '/calculator'
+        method: 'GET',
+        url: '/calculator'
     }).then(function (response) {
         render(response)
-      console.log('getString function!', response)
-      //render(response);
+        console.log('getString function!', response)
+        //render(response);
     }).catch(function (error) {
-      alert('Whoops!')
-      console.log('Error server', error)
+        alert('Whoops!')
+        console.log('Error server', error)
     })
-  }
+}
 
 function mathButton() {
     thisVal = $(this).val()
     console.log('Selected button is:', thisVal)
-  }
-  
+}
+
 //add strings from the inputs and buttons to an array
 
 function stringToAdd(event) {
     console.log('string to add function')
     event.preventDefault()
-    
+
     const digitOne = $('#digit-one').val()
     const digitTwo = $('#digit-two').val()
-   
-        $.ajax({
+
+    $.ajax({
         method: 'POST',
         url: '/calculator',
         data: {
-          stringToAdd: {
-            num1: digitOne,
-            num2: digitTwo,
-            btn: thisVal
+            stringToAdd: {
+                num1: digitOne,
+                num2: digitTwo,
+                btn: thisVal
             }
         }
-      }).then(function (response) {
+    }).then(function (response) {
         console.log('success!', response)
         //GET function here
         getString()
-      }).catch(function (error) {
+    }).catch(function (error) {
         alert('whoopsie!')
         console.log('error with post', error)
-      })
-    }
+    })
+}
 
 function render(response) {
     console.log('render is running')
@@ -68,15 +70,29 @@ function render(response) {
     if (response.length > 0) {
         const latestResult = response[response.length - 1]
         $('#solution').append(`<h2>${latestResult.result}</h2>`)
-      }
-    // for (let value of response) {
-    //     $('#solution').append(`
-    //     <h2>${value.result}</h2>`)
-    //     }
+    }
+    for (let value of response) {
+        $('#full-equation').append(`
+        <ul>
+            <li>${value.num1}${value.btn}${value.num2}=${value.result}</li>
+        </ul>`)
+    }
 }
+    function clearInputs(event) {
+        event.preventDefault()
+        $('.clear').empty()
+        $.ajax({
+            method: 'POST',
+            url: '/clear',
+        }).then(function (response) {
+            console.log('did clear work?', response);
+            getString();
+        })
+    }
 
 
-   
 
-    
+
+
+
 

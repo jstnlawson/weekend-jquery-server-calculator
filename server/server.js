@@ -28,6 +28,10 @@ app.post('/calculator', function (req, res) {
     res.sendStatus(201)
   })
 
+  app.post('/clear', function (req, res) {
+    res.sendStatus(201)
+  })
+
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
 })

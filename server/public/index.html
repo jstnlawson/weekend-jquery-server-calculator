@@ -11,19 +11,20 @@
 <body>
     <h1>Server Side Calculator</h1>
 
-    <input id="digit-one" type="text" />
-
-    <button id="add-btn" class="math-btn" value="+">+</button>
-    <button id="minus-btn" class="math-btn" value="-">-</button>
-    <button id="multiply-btn" class="math-btn" value="*">*</button>
-    <button id="divide-btn" class="math-btn" value="/">/</button>
-
-    <input type="text" id="digit-two"/>
-
-    <button type="submit" id="equals-btn">=</button>
-    <button id="clear-btn">c</button>
+    <form id="calculator">
+        <input id="digit-one" type="text" class="clear"/>
+        <button id="add-btn" class="math-btn" value="+">+</button>
+        <button id="minus-btn" class="math-btn" value="-">-</button>
+        <button id="multiply-btn" class="math-btn" value="*">*</button>
+        <button id="divide-btn" class="math-btn" value="/">/</button>
+        <input type="text" id="digit-two" class="clear"/>
+        <button type="submit" id="equals-btn">=</button>
+        <button id="clear-btn">c</button>
+    </form>
 
     <div id="solution"></div>
+
+    <div id="full-equation"></div>
 
 
 </body>
