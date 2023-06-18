@@ -1,0 +1,72 @@
+p {
+    display: inline-block;
+    text-align: center;
+    font-family: 'Segment7';
+    color: #35322c;
+    margin: 5px 0 0 20px;
+}
+
+#calculator-border {
+    display: block;
+    width: 300px;
+    height: 450px;
+    margin: auto auto auto auto;
+    background-color: #d0c1ac;
+    box-shadow: 0px 0px 0px 0px #d0c1ac inset,
+        0px -10px 10px 10px #9b8e7d inset,
+        0px 1px 0px 2px #d0c1ac inset,
+        0 55px 10px -25px rgba(0,0,0,0.1),
+        0 65px 30px -10px rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+
+#equation-data {
+    color: #007000ab;
+    font-size: xx-large;
+    background-color: #dee4d6;
+    font-family: sans-serif; /*'Segment7', the operators don't read :(*/
+    width: 216px;
+    height: 60px;
+  position: inherit;
+  margin: 20px 10px 10px 15px;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px .05px #130f0a inset,
+        5px 0 5px -4px #130f0a inset,
+        -0.5px 0 3px 1px #130f0a inset,
+        0 0 0 2px rgba(0,0,0,1),
+        0 65px 50px -10px rgba(0,0,0,-0.05)
+}
+
+.lower-btns {
+    margin: 11px;
+    margin-top: 25px;
+}
+
+#clear-btn {
+background-color: #c24747;
+color: antiquewhite;
+height: 40px;
+    width: 30px;
+    font-size: x-large;
+}
+
+.math-btn {
+    background-color: #9b8e7d;
+    color: antiquewhite;
+    height: 60px;
+    width: 60px;
+    margin: 3px;
+    font-size: xx-large;
+}
+
+#equals-btn {
+    background-color: #4646b2;
+    color: antiquewhite;
+    height: 60px;
+    width: 60px;
+    margin: 3px;
+    font-size: xx-large;
+}
+#add-btn {
+    font-family: sans-serif;
+}

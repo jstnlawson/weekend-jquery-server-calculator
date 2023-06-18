@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css">
     <link rel="stylesheet" href="style.css">
     <script src="vendors/jquery-3.7.0.js"></script>
     <script src="client.js"></script>
     <title>jQuery Server Calculator</title>
 </head>
+
 <body>
-    <h1>Server Side Calculator</h1>
+    <!-- <h1>Server Side Calculator</h1> -->
+    <div id="calculator-border">
+        <div id="row-one">
+            <input type="text" id="equation-data" />
+            <button type="submit" id="clear-btn">c</button>
+        </div>
+        <p>SERVER SIDE CALCULATOR</p>
+        <div class="lower-btns">
+        <div id="row-two">
+            <button class="math-btn" class="body-btn" value="7">7</button>
+            <button class="math-btn" class="body-btn" value="8">8</button>
+            <button class="math-btn" class="body-btn" value="9">9</button>
+            <button id="add-btn" class="math-btn" class="body-btn" value="+">+</button>
+        </div>
+        <div id="row-three">
+            <button class="math-btn" class="body-btn" value="4">4</button>
+            <button class="math-btn" class="body-btn" value="5">5</button>
+            <button class="math-btn" class="body-btn" value="6">6</button>
+            <button id="minus-btn" class="math-btn" class="body-btn" value="-">-</button>
+        </div>
+        <div id="row-four">
+            <button class="math-btn" class="body-btn" value="1">1</button>
+            <button class="math-btn" class="body-btn" value="2">2</button>
+            <button class="math-btn" class="body-btn" value="3">3</button>
+            <button id="multiply-btn" class="math-btn" class="body-btn" value="*">*</button>
+        </div>
+        <div id="row-five">
+            <button class="math-btn" class="body-btn" value="0">0</button>
+            <button class="math-btn" class="body-btn" value=".">.</button>
+            <button type="submit" class="body-btn" id="equals-btn">=</button>
+            <button id="divide-btn" class="math-btn" class="body-btn" value="/">/</button>
+        </div>
+    </div>
+        <!-- <input id="digit-one" type="text" class="clear" />
+        <button id="add-btn" class="math-btn" value="+">+</button>
+        <input type="text" id="digit-two" class="clear" />
 
-    <input id="digit-one" type="text"/>
+        <button type="submit" id="equals-btn">=</button> -->
+    </div>
+    <div id="solution"></div>
 
-    <button id="add-btn">+</button>
-    <button id="minus-btn">-</button>
-    <button id="multiply-btn">*</button>
-    <button id="divide-btn">/</button>
-
-    <input type="text" id="digit-two"/>
-
-    <button type="submit">=</button>
-    <button id="clear-btn">c</button>
+    <ul id="full-equation"></ul>
 
 
 </body>
+
 </html>
