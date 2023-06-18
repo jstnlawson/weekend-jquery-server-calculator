@@ -29,6 +29,7 @@ app.post('/calculator', function (req, res) {
   })
 
   app.post('/clear', function (req, res) {
+    calculatorArray = []
     res.sendStatus(201)
   })
 

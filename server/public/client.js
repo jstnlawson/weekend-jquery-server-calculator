@@ -11,7 +11,7 @@ function onReady() {
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
     //$('.math-btn').on('click', mathButton)
-    $('.clear').on('click', '#clear-btn', clearInputs)
+    $('#clear-btn').on('click', clearInputs)
 
 }
 
@@ -78,14 +78,16 @@ function render(response) {
         </ul>`)
     }
 }
-    function clearInputs(event) {
-        event.preventDefault()
-        $('.clear').empty()
+    function clearInputs() {
+        $('.clear').val('')
+        //$(".clear"+$(this).attr('class')).remove()
+        console.log('is clearInputs being called?')
+        //$('#arrayData').empty()
         $.ajax({
             method: 'POST',
             url: '/clear',
         }).then(function (response) {
-            console.log('did clear work?', response);
+            console.log('did .then clear work?', response);
             getString();
         })
     }
