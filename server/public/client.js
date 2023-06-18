@@ -10,8 +10,8 @@ function onReady() {
 
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
-    //$('.math-btn').on('click', mathButton)
-    $('#clear-btn').on('click', clearInputs)
+    $('.math-btn').on('click', mathButton)
+    //$('#clear-btn').on('click', clearInputs)
 
 }
 
@@ -71,26 +71,25 @@ function render(response) {
         const latestResult = response[response.length - 1]
         $('#solution').append(`<h2>${latestResult.result}</h2>`)
     }
+    $('#full-equation').empty()
     for (let value of response) {
         $('#full-equation').append(`
-        <ul>
-            <li>${value.num1}${value.btn}${value.num2}=${value.result}</li>
-        </ul>`)
+        <li>${value.num1}${value.btn}${value.num2}=${value.result}</li>`)
     }
 }
-    function clearInputs() {
-        $('.clear').val('')
-        //$(".clear"+$(this).attr('class')).remove()
-        console.log('is clearInputs being called?')
-        //$('#arrayData').empty()
-        $.ajax({
-            method: 'POST',
-            url: '/clear',
-        }).then(function (response) {
-            console.log('did .then clear work?', response);
-            getString();
-        })
-    }
+    // function clearInputs() {
+    //     $('input[type="text"]').val('')
+    //     //$(".clear"+$(this).attr('class')).remove()
+    //     console.log('is clearInputs being called?')
+    //     //$('#arrayData').empty()
+    //     $.ajax({
+    //         method: 'POST',
+    //         url: '/clear',
+    //     }).then(function (response) {
+    //         console.log('did .then clear work?', response);
+    //         getString();
+    //     })
+    // }
 
 
 
