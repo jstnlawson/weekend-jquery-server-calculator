@@ -34,6 +34,9 @@ function getString() {
 function mathButton() {
     thisVal = $(this).val()
     console.log('Selected button is:', thisVal)
+    // let inputBox = $('#equation-data')
+    // inputBox.val() = thisVal.val()
+    $('#equation-data').val($(this).val())
 }
 
 //add strings from the inputs and buttons to an array
