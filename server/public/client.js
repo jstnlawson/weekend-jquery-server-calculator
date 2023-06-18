@@ -11,7 +11,7 @@ function onReady() {
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
     $('.math-btn').on('click', mathButton)
-    //$('#clear-btn').on('click', clearInputs)
+    $('#clear-btn').on('click', clearInputs)
 
 }
 
@@ -30,6 +30,7 @@ function getString() {
     })
 }
 
+//get the text values from the math buttons
 function mathButton() {
     thisVal = $(this).val()
     console.log('Selected button is:', thisVal)
@@ -77,19 +78,19 @@ function render(response) {
         <li>${value.num1}${value.btn}${value.num2}=${value.result}</li>`)
     }
 }
-    // function clearInputs() {
-    //     $('input[type="text"]').val('')
-    //     //$(".clear"+$(this).attr('class')).remove()
-    //     console.log('is clearInputs being called?')
-    //     //$('#arrayData').empty()
-    //     $.ajax({
-    //         method: 'POST',
-    //         url: '/clear',
-    //     }).then(function (response) {
-    //         console.log('did .then clear work?', response);
-    //         getString();
-    //     })
-    // }
+    function clearInputs() {
+        $('input[type="text"]').val('')
+        //$(".clear"+$(this).attr('class')).remove()
+        console.log('is clearInputs being called?')
+        //$('#arrayData').empty()
+        $.ajax({
+            method: 'POST',
+            url: '/clear',
+        }).then(function (response) {
+            console.log('did .then clear work?', response);
+            getString();
+        })
+    }
 
 
 
