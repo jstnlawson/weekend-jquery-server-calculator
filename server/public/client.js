@@ -11,6 +11,7 @@ function onReady() {
     //POST on client side with submit button
     $('#equals-btn').on('click', stringToAdd)
     $('.math-btn').on('click', mathButton)
+    $('.math-btn').on('click', displayTheBtn)
     $('#clear-btn').on('click', clearInputs)
 
 }
@@ -36,7 +37,10 @@ function mathButton() {
     console.log('Selected button is:', thisVal)
     // let inputBox = $('#equation-data')
     // inputBox.val() = thisVal.val()
-    $('#equation-data').val($(this).val())
+}
+
+function displayTheBtn() {
+    $('#equation-data').val($('#equation-data').val() + $(this).val())
 }
 
 //add strings from the inputs and buttons to an array
@@ -45,17 +49,30 @@ function stringToAdd(event) {
     console.log('string to add function')
     event.preventDefault()
 
-    const digitOne = $('#digit-one').val()
-    const digitTwo = $('#digit-two').val()
+    // const digitOne = $('#digit-one').val()
+    // const digitTwo = $('#digit-two').val()
+    const equationData = $('#equation-data').val();
+    //const btnValue = thisVal;
+
+    //I was returning 3 of whichever number I entered last
+    //and ended up finding this use of split() for the 
+    //math operators. The '|' symbol is an OR operator.
+    const [num1, operator, num2] = equationData.split(/(\+|\-|\*|\/)/)
 
     $.ajax({
         method: 'POST',
         url: '/calculator',
         data: {
             stringToAdd: {
-                num1: digitOne,
-                num2: digitTwo,
-                btn: thisVal
+                // num1: digitOne,
+                // num2: digitTwo,
+                // btn: thisVal
+
+                //the example I found said trim ignores whitespace
+                //which causes errors
+                num1: num1.trim(),
+                btn: operator.trim(),
+                num2: num2.trim()
             }
         }
     }).then(function (response) {

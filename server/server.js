@@ -18,7 +18,7 @@ app.post('/calculator', function (req, res) {
     let num1 = Number(req.body.stringToAdd.num1)
     let num2 = Number(req.body.stringToAdd.num2)
     let btn = req.body.stringToAdd.btn
-    let result = doTheMath(num1, num2, btn)
+    let result = doTheMath(num1, btn, num2)
     //I got really stuck here, i had to google my way out of it
     //My understanding is that Object.assign() can tack another 
     //object onto an existing one

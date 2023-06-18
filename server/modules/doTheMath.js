@@ -13,7 +13,7 @@
 // }
 let results = 0
 
-function doTheMath (num1, num2, btn) {
+function doTheMath (num1, btn, num2) {
     if (btn === '+') {
         results = num1 + num2
     } else if (btn === '-') {
